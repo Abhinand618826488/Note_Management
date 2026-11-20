@@ -1,0 +1,89 @@
+###
+POST http://127.0.0.1:8000/api/register/
+Content-Type: application/json
+
+{
+    "username":"anu",
+    "email":"anu@gmail.com",
+    "password":"anu123"
+}
+
+###
+POST http://127.0.0.1:8000/api/login/
+Content-Type: application/json
+
+{
+    "username":"anu",
+    "password":"anu123"
+}
+
+###
+GET http://127.0.0.1:8000/api/notes/
+Accept: application/json
+Authorization: Token f569941b4ce9dad2417439967775cacc45bba3f9
+
+###
+POST http://127.0.0.1:8000/api/notes/
+Content-Type: application/json
+Authorization: Token f96d6e9488f9fbe1c521f3a22faa372d63a8bdfa
+
+{
+    "title":"Introduction to Python",
+    "description": "welcome to pyhton"
+}
+
+
+###
+PUT http://127.0.0.1:8000/api/update/1/
+Content-Type: application/json
+Authorization: Token f96d6e9488f9fbe1c521f3a22faa372d63a8bdfa
+
+
+{
+    "title":"Introduction to Python",
+    "description": "welcome to hell"
+}
+
+
+###
+DELETE  http://127.0.0.1:8000/api/delete/3/
+Accept: application/json
+Authorization: Token f96d6e9488f9fbe1c521f3a22faa372d63a8bdfa
+
+###
+POST http://127.0.0.1:8000/api/logout/
+Authorization: Token f96d6e9488f9fbe1c521f3a22faa372d63a8bdfa
+
+###
+POST http://127.0.0.1:8000/api/jwt_login/
+Content-Type: application/json
+
+{
+    "username":"anu",
+    "password":"anu123"
+}
+
+
+###
+POST http://127.0.0.1:8000/api/notes/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MDgyMzI2LCJpYXQiOjE3OTUwODIwMjYsImp0aSI6Ijg3NmZlZDQ2Yzg1MDQ4M2ZhM2M1NzRmOWViNWU2ZDQxIiwidXNlcl9pZCI6IjIifQ.-cQ9B9M2MdpDzUATDP6HhX4-RABL98BCEBevT01N2-U
+
+{
+    "title":"Factional",
+    "description": "welcome to pyhton",
+    "due_date":"2026-11-20"
+}
+
+###
+POST http://127.0.0.1:8000/api/refresh/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MDgyMzI2LCJpYXQiOjE3OTUwODIwMjYsImp0aSI6Ijg3NmZlZDQ2Yzg1MDQ4M2ZhM2M1NzRmOWViNWU2ZDQxIiwidXNlcl9pZCI6IjIifQ.-cQ9B9M2MdpDzUATDP6HhX4-RABL98BCEBevT01N2-U
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc5NTI0OTE5MSwiaWF0IjoxNzk1MTYyNzkxLCJqdGkiOiI2NzE3ODFkOTZhZjE0NTlkYWU5Nzg0NWJkZDhkZDg0NiIsInVzZXJfaWQiOiIyIn0.ObtnlvoKlwYx6Yu3t6oWU6Qh7lbLR490-bqbOWANLGQ"
+}
+
+###
+GET http://127.0.0.1:8000/api/task/
+Accept: application/json

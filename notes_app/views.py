@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from notes_app.models import NotesDb,TaskDb
 from django.shortcuts import get_object_or_404
-
+from rest_framework_simplejwt.tokens import RefreshToken
 
 class RegistrationView(APIView):
     def post(self,request):
@@ -94,10 +94,6 @@ class TaskRetrieveUpdateDeleteView(APIView):
     def get_task(self, request, id):
         return get_object_or_404(TaskDb, id=id, user=request.user)
 
-    def get(self, request, id):
-        task = self.get_task(request, id)
-        serializer_instance =TaskSerializer(task)
-        return Response(serializer_instance.data)
 
     def put(self, request, id):
         task = self.get_object(request, id)
@@ -116,3 +112,23 @@ class TaskRetrieveUpdateDeleteView(APIView):
         return Response({
             "Message" : "delete successfuly...!"
         })
+
+
+class JWT_Logout(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        try:
+            refresh_token = request.data.get('refresh')
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+
+            return Response({
+                "Message": "Logout Success"
+            })
+
+        except Exception:
+            return Response({
+                "Error": "Invalid refresh token"
+            })
+            
